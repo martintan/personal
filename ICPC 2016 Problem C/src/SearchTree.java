@@ -12,13 +12,20 @@ public class SearchTree {
 	
 	public static void main(String[] args) {
 //		SearchTree searchTree = new SearchTree();
+		
 		int randNumber = randomRange(1, 50);
+		int layers = randomRange(1, 20);
+		
 	}
 	
 	public class Node {
 		int number;
 		Node leftChild;
 		Node rightChild;
+	}
+	
+	public void search(int value) {
+		
 	}
 	
 	private static int randomRange(int min, int max) {
