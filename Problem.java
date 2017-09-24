@@ -14,6 +14,7 @@ public class Problem {
     public static void main(String[] args) {
         int[] sampleInput = {1,2,3,4,5};
         BinaryTree tree = new BinaryTree(sampleInput);
-        System.out.println(tree.root.number);
+//        System.out.println(tree.root.number);
+        System.out.println(tree.retrieve(tree.root, 5));
     }
 }

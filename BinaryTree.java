@@ -23,6 +23,14 @@ public class BinaryTree {
         }
     }
     
+    public Node retrieve(Node current, int number) {
+//        System.out.println(current.number);
+        if (number < current.number) return retrieve(current.leftChild, number);
+        else if (number > current.number) return retrieve(current.rightChild, number);
+        else if (number == current.number) return current;
+        else return null;
+    }
+    
     private Node createNode(int number) {
         return new Node(number);
     }
@@ -31,17 +39,9 @@ public class BinaryTree {
         // it will always return the current node
         if (current == null) return createNode(number);
         else {
-            if (number <= current.number) current.leftChild = insert(current.leftChild, number);
+            if (number < current.number) current.leftChild = insert(current.leftChild, number);
             else current.rightChild = insert(current.rightChild, number);
             return current;
         }
-    }
-    
-    private void recursiveSearch(Node current) {
-    	
-    }
-
-    public void search(int number) {
-
     }
 }
