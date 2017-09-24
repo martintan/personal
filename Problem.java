@@ -9,12 +9,11 @@ package icpc.problems.problemC;
  *
  * @author Martin
  */
-public class Node {
-    public int number;
-    public Node leftChild;
-    public Node rightChild;
-    
-    public Node(int number) {
-        this.number = number;
+public class Problem {
+
+    public static void main(String[] args) {
+        int[] sampleInput = {1,2,3,4,5};
+        BinaryTree tree = new BinaryTree(sampleInput);
+        System.out.println(tree.root.number);
     }
 }
