@@ -3,9 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package icpc.problems.problemC;
+package ProblemC;
 
-import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.Queue;
 
 /**
  *
@@ -23,12 +24,27 @@ public class BinaryTree {
         }
     }
     
+    public Queue<Integer> getShape(Node node) {
+    	Queue<Integer> queue = new LinkedList<Integer>();
+    	shape(queue, node);
+    	return queue;
+    }
+    
+    private Node shape(Queue<Integer> queue, Node node) {
+    	if (node != null) {
+    		if (shape(queue, node.leftChild) != null) queue.add(0);
+    		if (shape(queue, node.rightChild) != null) queue.add(1);
+    	}
+    	return node;
+    }
+    
     public Node retrieve(Node current, int number) {
-//        System.out.println(current.number);
-        if (number < current.number) return retrieve(current.leftChild, number);
-        else if (number > current.number) return retrieve(current.rightChild, number);
-        else if (number == current.number) return current;
-        else return null;
+    	if (current == null) return null;
+//		System.out.println("Looking at Node("+ Integer.toString(current.number) +")");
+    	if (current.number == number) return current;
+		Node lastNode = retrieve(current.leftChild, number);
+		if (lastNode == null) lastNode = retrieve(current.rightChild, number);
+		return lastNode;
     }
     
     private Node createNode(int number) {
@@ -36,7 +52,7 @@ public class BinaryTree {
     }
 
     private Node insert(Node current, int number) {
-        // it will always return the current node
+    	// only insert when there is an available spot
         if (current == null) return createNode(number);
         else {
             if (number < current.number) current.leftChild = insert(current.leftChild, number);
