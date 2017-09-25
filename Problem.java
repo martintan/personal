@@ -3,21 +3,25 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ProblemC;
+package icpc.problems.problemC;
+import java.util.Arrays;
+import java.util.Queue;
 
 /**
  *
  * @author Martin
  */
-public class ProblemC {
+public class Problem {
 
     public static void main(String[] args) {
-        int[] sampleInput = {1,2,3,4,5};
-        BinaryTree tree = new BinaryTree(sampleInput);
-//        System.out.println(tree.root.number);
-        Node testNode = new Node(0);
-        testNode.rightChild = new Node(6);
-        tree.root.leftChild = testNode;
-        System.out.println(tree.retrieve(tree.root, 5).number);
+        int[] input = {2,7,1,3,1,4,1,5,9,2,6,5,9,7,3};
+        int[] treeValues = new int[3];
+        for (int i=0;i<input.length;i++) {
+            treeValues[i % 3] = input[i];
+            if ((i+1) % 3 == 0) {
+                BinaryTree tree = new BinaryTree(treeValues);
+                System.out.println(tree.getShape(tree.root));
+            }
+        }
     }
 }

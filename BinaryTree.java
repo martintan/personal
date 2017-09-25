@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ProblemC;
+package icpc.problems.problemC;
 
 import java.util.LinkedList;
 import java.util.Queue;
@@ -32,19 +32,19 @@ public class BinaryTree {
     
     private Node shape(Queue<Integer> queue, Node node) {
     	if (node != null) {
-    		if (shape(queue, node.leftChild) != null) queue.add(0);
-    		if (shape(queue, node.rightChild) != null) queue.add(1);
+            if (shape(queue, node.leftChild) != null) queue.add(0);
+            if (shape(queue, node.rightChild) != null) queue.add(1);
     	}
     	return node;
     }
     
     public Node retrieve(Node current, int number) {
     	if (current == null) return null;
-//		System.out.println("Looking at Node("+ Integer.toString(current.number) +")");
+//          System.out.println("Looking at Node("+ Integer.toString(current.number) +")");
     	if (current.number == number) return current;
-		Node lastNode = retrieve(current.leftChild, number);
-		if (lastNode == null) lastNode = retrieve(current.rightChild, number);
-		return lastNode;
+            Node lastNode = retrieve(current.leftChild, number);
+            if (lastNode == null) lastNode = retrieve(current.rightChild, number);
+            return lastNode;
     }
     
     private Node createNode(int number) {
